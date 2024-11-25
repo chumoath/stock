@@ -18,9 +18,9 @@ funds = [
     # {"name": "广发纳斯达克100ETFC", "code": "006479.OF"},
     {"name": "广发纳斯达克100ETFA", "code": "270042.OF"},
     {"name": "嘉实美国成长股票", "code": "000043.OF"},
-    {"name": "国泰黄金", "code": "004253.OF"},
-    {"name": "易方达黄金", "code": "002963.OF"},
-    {"name": "博时黄金", "code": "002611.OF"},
+    # {"name": "国泰黄金", "code": "004253.OF"},
+    # {"name": "易方达黄金", "code": "002963.OF"},
+    # {"name": "博时黄金", "code": "002611.OF"},
 ]
 start_date = "20140101"  # 开始日期
 end_date = "20241231"  # 结束日期
@@ -29,7 +29,7 @@ end_date = "20241231"  # 结束日期
 daily_investment = 50
 
 # 定义四年间隔的时间段
-quadrennial_periods = [(year, year + 3) for year in range(2014, 2024)]
+quadrennial_periods = [(year, year + 3) for year in range(2014, 2022)]
 results = pd.DataFrame(index=[f"{start}-{end}" for start, end in quadrennial_periods])
 
 # 遍历每只基金
@@ -77,6 +77,7 @@ for fund in funds:
         profit = total_value - total_investment
         profit_percentage = (profit / total_investment) * 100
 
+        # print(total_investment)
         # 保存结果
         quadrennial_results[f"{start_year}-{end_year}"] = profit_percentage
 
