@@ -47,7 +47,7 @@ for fund in funds:
     fund_data['Day'] = fund_data['Date'].dt.day  # 添加天数列
 
     # 筛选15日后的第一个交易日
-    fund_data['After_15th'] = fund_data['Day'] >= 28  # 筛选15日后的数据
+    fund_data['After_15th'] = fund_data['Day'] >= 28  # 筛选28日后的数据
     fund_data['Month_Group'] = fund_data['Year'] * 100 + fund_data['Month']  # 分组标记
     fund_data['First_Trade_After_15th'] = fund_data.groupby('Month_Group')['After_15th'].cumsum() == 1
     monthly_trade_days = fund_data[fund_data['First_Trade_After_15th']]
@@ -84,7 +84,7 @@ for fund in funds:
     results[fund_name] = pd.Series(quadrennial_results)
 
 # 输出最终表格
-print("\n==== 基金每四年收益率（每月15日后的第一个交易日定投） ====\n")
+print("\n==== 基金每四年收益率（每月28日后的第一个交易日定投） ====\n")
 print(results)
 
 # 保存结果到 CSV 文件
